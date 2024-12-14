@@ -1,0 +1,34 @@
+[ 
+    { 
+        "id": "1", 
+        "name" : "C5",  
+        "manufacturer" : "Citroen", 
+        "is_petrol" : true, 
+        "tank_volume" : "71" 
+    },{ 
+        "id": "2", 
+        "name" : "Aviator II",  
+        "manufacturer" : "Lincoln", 
+        "is_petrol" : true, 
+        "tank_volume" : "400" 
+    },{ 
+        "id": "3", 
+        "name" : "M5",  
+        "manufacturer" : "Dongfeng", 
+        "is_petrol" : true, 
+        "tank_volume" : "60" 
+    },{ 
+        "id": "4", 
+        "name" : "EQA 260",  
+        "manufacturer" : "Mercedes-Benz", 
+        "is_petrol" : false, 
+        "tank_volume" : "0" 
+    },{ 
+        "id": "5", 
+        "name" : "3 Long Range ",  
+        "manufacturer" : "Tesla Model", 
+        "is_petrol" : false, 
+        "tank_volume" : "0" 
+    } 
+ 
+]
