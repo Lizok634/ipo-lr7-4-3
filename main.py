@@ -1,7 +1,8 @@
-import json#подключаем библиотеку
+оректное число ,говорим ,что такого номер не существует 
+    import json#подключаем библиотеку
 cars_kol=5#количество всех машин
 with open("cars.json", 'r', encoding='utf-8') as file:#открываем файл cars.json и говорим, что будем читать из файла
-    inf = json.load(file)#Присваеваем переменной inf 
+ inf = json.load(file)#Присваеваем переменной inf 
 commands = [
     "Вывести все записи",
     "Вывести запись по полю",
@@ -23,7 +24,11 @@ while True:#бесконечный цикл
      3.Добавить запись
      4.Удалить запись по полю
      5.Выйти из программы""" )
-    num=int(input("Ваше значение: "))
+    num=input("Ваше значение: ")
+    while not num.isdigit():
+        print("Неккоректное значение. Попробуйте еще раз :)")
+        num = input("Введите номер записи машины : ")
+        num=int(num)
     if num==1:#если num=1,то выводятся все данные каждой машины
         for car in inf:
             if car["is_petrol"] == True:
@@ -43,6 +48,7 @@ while True:#бесконечный цикл
         while not id.isdigit():
             print("Неккоректное значение. Попробуйте еще раз :)")
             id = input("Введите номер записи машины : ")
+            id=int(id)
         for car in inf:
             if id == car.get("id"):
                 if car["is_petrol"] == True:
@@ -76,8 +82,8 @@ while True:#бесконечный цикл
         new_tank_volume = input("Введите объём бака: ")
         while not new_tank_volume.isdigit():
             print("Неверное значение,введите ответ корректно")
-            new_tank_volume = input("Введите объём бака: ")
-        new_tank_volume = float(new_tank_volume)
+            new_tank_volume = input("Введите объём бака(целое число): ")
+        new_tank_volume = int(new_tank_volume)
         if new_is_petrol == "да":
             petrol_proverka = True
         else: 
@@ -118,3 +124,4 @@ while True:#бесконечный цикл
     else:
        print("Веденного номера не существует")#если пользователь ввел неккоректное число ,говорим ,что такого номер не существует 
     
+      
