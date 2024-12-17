@@ -1,7 +1,7 @@
 import json#подключаем библиотеку
 cars_kol=5#количество всех машин
 with open("cars.json", 'r', encoding='utf-8') as file:#открываем файл cars.json и говорим, что будем читать из файла
- inf = json.load(file)#Присваеваем переменной inf 
+    inf = json.load(file)#Присваеваем переменной inf 
 commands = [
     "Вывести все записи",
     "Вывести запись по полю",
