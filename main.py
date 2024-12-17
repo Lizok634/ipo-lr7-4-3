@@ -42,7 +42,7 @@ while True:#бесконечный цикл
         id=input("Введите номер записи машины: ")
         while not id.isdigit():
             print("Неккоректное значение. Попробуйте еще раз :)")
-        id = input("Введите номер записи машины : ")
+            id = input("Введите номер записи машины : ")
         for car in inf:
             if id == car.get("id"):
                 if car["is_petrol"] == True:
