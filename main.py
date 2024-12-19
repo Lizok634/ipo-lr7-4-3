@@ -1,6 +1,4 @@
-оректное число ,говорим ,что такого номер не существует 
-    import json#подключаем библиотеку
-cars_kol=5#количество всех машин
+import json#подключаем библиотеку
 with open("cars.json", 'r', encoding='utf-8') as file:#открываем файл cars.json и говорим, что будем читать из файла
  inf = json.load(file)#Присваеваем переменной inf 
 commands = [
@@ -27,39 +25,30 @@ while True:#бесконечный цикл
     num=input("Ваше значение: ")
     while not num.isdigit():
         print("Неккоректное значение. Попробуйте еще раз :)")
-        num = input("Введите номер записи машины : ")
-        num=int(num)
+        num = input("Введите значение снова : ")
+    num=int(num)
     if num==1:#если num=1,то выводятся все данные каждой машины
         for car in inf:
-            if car["is_petrol"] == True:
-                pet="да"
-            else:
-                pet="нет"
-        print(f"""
-         Номер записи: {car["id"]},
-         Название модели: {car["name"]},
-         Название производителя: {car["manufacturer"]},
-        Заправляется бензином: {pet},
-        Объем бака: {car["tank_volume"]}
-         """)
+            print(f"""
+            Номер записи: {car["id"]},
+            Название модели: {car["name"]},
+            Название производителя: {car["manufacturer"]},
+            Заправляется бензином: {car["is_petrol"]},
+            Объем бака: {car["tank_volume"]}
+            """)
         actions_count[1] += 1#увеличение счетчика
     elif num==2:#если num=2,то выводится запись по полю
         id=input("Введите номер записи машины: ")
         while not id.isdigit():
             print("Неккоректное значение. Попробуйте еще раз :)")
             id = input("Введите номер записи машины : ")
-            id=int(id)
         for car in inf:
             if id == car.get("id"):
-                if car["is_petrol"] == True:
-                    pet="да"
-                elif car["is_petrol"] == False:
-                    pet="нет"
                 print(f"""
                 Номер записи: {car["id"]},
                 Название модели: {car["name"]},
                 Название производителя: {car["manufacturer"]},
-                Заправляется бензином: {pet},
+                Заправляется бензином: {car["is_petrol"]},
                 Объем бака: {car["tank_volume"]}
                 """)
                 proverka=True
@@ -69,7 +58,7 @@ while True:#бесконечный цикл
         actions_count[2] += 1#увеличение счетчика
     elif num==3:#если num=3,то добавляем машину
         proverka=False
-        new_id=cars_kol+1  
+        new_id=len(inf) + 1 
         new_name = input("Введите название модели: ")
         new_manufacturer = input("Введите производителя: ")
         new_is_petrol = input("Машина заправляется бензином (да/нет): ").lower()
@@ -101,20 +90,22 @@ while True:#бесконечный цикл
         print("Машина добавлена!")
         actions_count[3]+= 1#увеличение счетчика
     elif num==4:#если num=4,то мы удаляем любую машину в файле 
+        proverka=False
         id = input("Введите номер записи машины: ")
         while not id.isdigit():
-            id=input("Некорректное  значение.Введите номер записи машины снова: ")
+            id=input("Некорректное значение.Введите номер записи машины снова: ")
         id=int(id)
         for car in inf:
             if id ==car.get("id"):
                inf.remove(car)#удаление машины из списка машин в переменной inf
                proverka=True
                break
-        if not proverka:
+        if proverka==False:
             print("Машина не найдена ")
         with open("cars.json",'w', encoding='utf-8') as other_file:#открываем файл и говорим ,что будем что-то записывать в него
-           json.dump(inf,other_file)#заменяем содержимое other_file на содержимое переменной inf
-        print("Машина удалена")
+            json.dump(inf,other_file)#заменяем содержимое other_file на содержимое переменной inf
+        if proverka==True:
+            print("Машина удалена")
         actions_count[4] += 1
     elif num == 5:#если num = 5,завершаем работу программы
         actions_count[5] += 1
@@ -122,6 +113,4 @@ while True:#бесконечный цикл
             print(f"{el}: {actions_count[i]}")
             break#выходим из цикла
     else:
-       print("Веденного номера не существует")#если пользователь ввел неккоректное число ,говорим ,что такого номер не существует 
-    
-      
+       print("Веденного номера не существует")#если пользователь ввел неккоректное число ,говорим ,что такого номер не существует
